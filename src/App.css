@@ -1,0 +1,30 @@
+ul,ol,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.am-card-header-content{
+  font-size: 12px;
+  line-height: 14px;
+  color: #999999;
+}
+.newTodo{
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% - 24px);
+  width: 48px;
+  height: 48px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  border-radius: 24px;
+  background: #1976D2;
+  color: #ffffff;
+  text-align: center;
+  padding: 13px;
+
+}

@@ -1,0 +1,13 @@
+{
+  "main.css": "/webpack-demo/build/static/css/main.032ab850.chunk.css",
+  "main.js": "/webpack-demo/build/static/js/main.c7810974.chunk.js",
+  "main.js.map": "/webpack-demo/build/static/js/main.c7810974.chunk.js.map",
+  "runtime~main.js": "/webpack-demo/build/static/js/runtime~main.5141b3f3.js",
+  "runtime~main.js.map": "/webpack-demo/build/static/js/runtime~main.5141b3f3.js.map",
+  "static/js/2.2050718e.chunk.js": "/webpack-demo/build/static/js/2.2050718e.chunk.js",
+  "static/js/2.2050718e.chunk.js.map": "/webpack-demo/build/static/js/2.2050718e.chunk.js.map",
+  "index.html": "/webpack-demo/build/index.html",
+  "precache-manifest.9874d6d805057c5f69a00c46e4b58136.js": "/webpack-demo/build/precache-manifest.9874d6d805057c5f69a00c46e4b58136.js",
+  "service-worker.js": "/webpack-demo/build/service-worker.js",
+  "static/css/main.032ab850.chunk.css.map": "/webpack-demo/build/static/css/main.032ab850.chunk.css.map"
+}
