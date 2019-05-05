@@ -46,15 +46,9 @@ class App extends Component {
     this.newTitleChange = this.newTitleChange.bind(this);
     this.newContentChange = this.newContentChange.bind(this);
   }
-
-  newTitleChange(event) {
-    this.setState({newTitle: event.target.value});
+  componentDidUpdate(){
+    localStore.save('todoList', this.state.todoList)
   }
-  newContentChange(event) {
-    this.setState({newContent: event.target.value});
-  }
-
-
   componentWillMount() {
     //let listNum = this.state.todoList.length;
     //let newId = this.state.todoList[listNum].id + 1;
@@ -63,70 +57,6 @@ class App extends Component {
     this.state.todoList.map((item,index) => {
       return this.setState({newId:item.id + 1});
     })
-  }
-  showModal = key => (e) => {
-    e.preventDefault(); // 修复 Android 上点击穿透
-    this.setState({
-      [key]: true,
-    });
-  }
-  onClose = key => () => {
-    this.setState({
-      [key]: false,
-    });
-  }
-  onWrapTouchStart = (e) => {
-    // fix touch to scroll background page on iOS
-    if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
-      return;
-    }
-    const pNode = closest(e.target, '.am-modal-content');
-    if (!pNode) {
-      e.preventDefault();
-    }
-  }
-  editNewTodo = (title,content) => {
-    let nowTime = new Date();
-    let item = {
-      id: this.state.newId,
-      title: title,
-      content: content,
-      date: this.dateFormat(nowTime),
-      position: "杭州",
-      deleted: false,
-      finished: false
-    };
-    this.state.todoList.push(item);
-    this.setState({
-      todoList : this.state.todoList,
-      newTitle : "",
-      newContent: "",
-      deleted: false,
-      newId: this.state.newId+1
-    });
-    localStore.save('todoList', this.state.todoList)
-  };
-
-  dateFormat = (date) => {
-    let year = date.getFullYear();
-    let month = date.getMonth() >= 10 ? date.getMonth().toString() : "0" + date.getMonth().toString();
-    let day = date.getDay() >= 10 ? date.getDay().toString() : "0" + date.getDay().toString();
-    let hour = date.getHours() >= 10 ? date.getHours().toString() : "0" + date.getHours().toString();
-    let minute = date.getMinutes() >= 10 ? date.getMinutes().toString() : "0" + date.getMinutes().toString();
-    let second = date.getSeconds() >= 10 ? date.getSeconds().toString() : "0" + date.getSeconds().toString();
-    return `${year}-${month}-${day} ${hour}:${minute}:${second}`
-  };
-
-  updateCardStatus = (e,todo) => {
-    todo.finished = e;
-    this.setState(this.state);
-    localStore.save('todoList', this.state.todoList)
-  };
-
-  deleteCard(event, todo){
-    todo.deleted = true;
-    this.setState(this.state);
-    localStore.save('todoList', this.state.todoList)
   }
   render() {
     let todos = this.state.todoList.filter((item)=> !item.deleted).map((item, index) => {
@@ -182,6 +112,75 @@ class App extends Component {
         </Modal>
       </div>
     );
+  }
+
+  newTitleChange(event) {
+    this.setState({newTitle: event.target.value});
+  }
+  newContentChange(event) {
+    this.setState({newContent: event.target.value});
+  }
+
+  showModal = key => (e) => {
+    e.preventDefault(); // 修复 Android 上点击穿透
+    this.setState({
+      [key]: true,
+    });
+  };
+  onClose = key => () => {
+    this.setState({
+      [key]: false,
+    });
+  };
+  onWrapTouchStart = (e) => {
+    // fix touch to scroll background page on iOS
+    if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+      return;
+    }
+    const pNode = closest(e.target, '.am-modal-content');
+    if (!pNode) {
+      e.preventDefault();
+    }
+  };
+  editNewTodo = (title,content) => {
+    let nowTime = new Date();
+    let item = {
+      id: this.state.newId,
+      title: title,
+      content: content,
+      date: this.dateFormat(nowTime),
+      position: "杭州",
+      deleted: false,
+      finished: false
+    };
+    this.state.todoList.push(item);
+    this.setState({
+      todoList : this.state.todoList,
+      newTitle : "",
+      newContent: "",
+      deleted: false,
+      newId: this.state.newId+1
+    });
+  };
+
+  dateFormat = (date) => {
+    let year = date.getFullYear();
+    let month = date.getMonth() >= 10 ? date.getMonth().toString() : "0" + date.getMonth().toString();
+    let day = date.getDay() >= 10 ? date.getDay().toString() : "0" + date.getDay().toString();
+    let hour = date.getHours() >= 10 ? date.getHours().toString() : "0" + date.getHours().toString();
+    let minute = date.getMinutes() >= 10 ? date.getMinutes().toString() : "0" + date.getMinutes().toString();
+    let second = date.getSeconds() >= 10 ? date.getSeconds().toString() : "0" + date.getSeconds().toString();
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+  };
+
+  updateCardStatus = (e,todo) => {
+    todo.finished = e;
+    this.setState(this.state);
+  };
+
+  deleteCard(event, todo){
+    todo.deleted = true;
+    this.setState(this.state);
   }
 }
 
