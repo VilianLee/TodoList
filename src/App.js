@@ -10,7 +10,6 @@ import {
 import TodoInput from './component/TodoItem/TodoInput/TodoInput'
 import TodoItem from './component/TodoItem/TodoItem'
 
-import * as localStore from './localStore'
 
 
 
@@ -34,7 +33,7 @@ class App extends Component {
       newContent: "",
       newId: 0,
       isEdit: false,
-      todoList: localStore.load('todoList') || [
+      todoList: [
         {
           id: 1,
           title: "第一个待办",
@@ -50,7 +49,7 @@ class App extends Component {
     this.newContentChange = this.newContentChange.bind(this);
   }
   componentDidUpdate(){
-    localStore.save('todoList', this.state.todoList)
+
   }
   componentWillMount() {
     //let listNum = this.state.todoList.length;

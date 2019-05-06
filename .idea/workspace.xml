@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59906cfd-47c4-4176-9ee8-cc6ade9f4e64" name="Default" comment="删除测试代码">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/leanCloud.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="59906cfd-47c4-4176-9ee8-cc6ade9f4e64" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,8 +31,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+            <state relative-caret-position="288">
+              <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -68,8 +66,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/leanCloud.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -165,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1557039247112</updated>
       <workItem from="1557039249604" duration="4467000" />
-      <workItem from="1557048483419" duration="5964000" />
+      <workItem from="1557048483419" duration="9428000" />
     </task>
     <task id="LOCAL-00001" summary="测试leancloud功能">
       <created>1557113288099</created>
@@ -181,11 +179,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557113361809</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新建leanCloud文件">
+      <created>1557113493317</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557113493317</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10431000" />
+    <option name="totallyTimeSpent" value="13895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1851" height="865" extended-state="4" />
@@ -220,7 +225,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="测试leancloud功能" />
     <MESSAGE value="删除测试代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除测试代码" />
+    <MESSAGE value="新建leanCloud文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="新建leanCloud文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -275,8 +281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        <state relative-caret-position="288">
+          <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
