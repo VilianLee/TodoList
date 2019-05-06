@@ -23,6 +23,15 @@ AV.init({
 });
 
 
+let TestObject = AV.Object.extend('TestObject');
+let testObject = new TestObject();
+testObject.save({
+  words: 'Hello World!'
+}).then(function(object) {
+  alert('LeanCloud Rocks!');
+})
+
+
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
   while (el) {
