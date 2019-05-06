@@ -9,7 +9,7 @@ import {
 
 import TodoInput from './component/TodoItem/TodoInput/TodoInput'
 import TodoItem from './component/TodoItem/TodoItem'
-
+import UserDialog from './component/userDialog'
 
 
 
@@ -112,6 +112,7 @@ class App extends Component {
             <TodoInput placeholder="请输入待办内容" value={this.state.newContent} update={this.newContentChange}/>
           </div>
         </Modal>
+        <UserDialog/>
       </div>
     );
   }
