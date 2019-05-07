@@ -9,7 +9,7 @@ import {
 
 import TodoInput from './component/TodoItem/TodoInput/TodoInput'
 import TodoItem from './component/TodoItem/TodoItem'
-import UserDialog from './component/userDialog'
+import UserDialog from './component/TodoItem/UserDialog/userDialog'
 
 
 
