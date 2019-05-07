@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import 'antd-mobile/dist/antd-mobile.css';
 import './App.css';
 import {
+  Popover,
   NavBar,
   Icon,
   Modal
@@ -11,7 +12,10 @@ import TodoInput from './component/TodoItem/TodoInput/TodoInput'
 import TodoItem from './component/TodoItem/TodoItem'
 import UserDialog from './component/TodoItem/UserDialog/userDialog'
 
+import {getCurrentUser,signOut} from './leanCloud'
 
+
+const Item = Popover.Item;
 
 
 function closest(el, selector) {
@@ -33,6 +37,7 @@ class App extends Component {
       newContent: "",
       newId: 0,
       isEdit: false,
+      user: getCurrentUser() || {},
       todoList: [
         {
           id: 1,
@@ -43,7 +48,8 @@ class App extends Component {
           deleted: false,
           finished: false
         }
-      ]
+      ],
+      user_control_visbility:false
     };
     this.newTitleChange = this.newTitleChange.bind(this);
     this.newContentChange = this.newContentChange.bind(this);
@@ -72,10 +78,31 @@ class App extends Component {
           mode="light"
           icon={<Icon type="left"/>}
           onLeftClick={() => console.log('onLeftClick')}
-          rightContent={[
-            <Icon key="1" type="ellipsis"/>
-          ]}
-        >我的待办</NavBar>
+          rightContent={
+            <Popover overlayClassName="fortest"
+                     overlayStyle={{ color: 'currentColor' }}
+                     visible={this.state.user_control_visbility}
+                     overlay={this.state.user.id ? [<Item><span onClick={this.signOut.bind(this)}>登出</span></Item>] : []}
+                     align={{
+                       overflow: { adjustY: 0, adjustX: 0 },
+                       offset: [-10, 0],
+                     }}
+                     onVisibleChange={this.handleVisibleChange}
+                     onSelect={this.onSelect}
+            >
+              <div style={{
+                height: '100%',
+                padding: '0 15px',
+                marginRight: '-15px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              >
+                <Icon type="ellipsis" />
+              </div>
+            </Popover>
+          }
+        >{this.state.user.username||'我'}的待办</NavBar>
         <div className="todoList">
           {todos}
         </div>
@@ -112,18 +139,38 @@ class App extends Component {
             <TodoInput placeholder="请输入待办内容" value={this.state.newContent} update={this.newContentChange}/>
           </div>
         </Modal>
-        <UserDialog/>
+        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)}/>}
       </div>
     );
   }
-
+  onSignUp(user){
+    let stateCopy = JSON.parse(JSON.stringify(this.state));
+    stateCopy.user = user;
+    this.setState(stateCopy)
+  }
+  signOut(){
+    signOut();
+    let stateCopy = JSON.parse(JSON.stringify(this.state));
+    stateCopy.user = {};
+    this.setState(stateCopy)
+  }
   newTitleChange(event) {
     this.setState({newTitle: event.target.value});
   }
   newContentChange(event) {
     this.setState({newContent: event.target.value});
   }
-
+  onSelect = (opt) => {
+    // console.log(opt.props.value);
+    this.setState({
+      user_control_visbility: false
+    });
+  };
+  handleVisibleChange = (visible) => {
+    this.setState({
+      visible,
+    });
+  };
   showModal = key => (e) => {
     e.preventDefault(); // 修复 Android 上点击穿透
     this.setState({

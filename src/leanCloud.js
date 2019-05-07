@@ -27,9 +27,23 @@ export function signUp(username, password, successFn, errorFn){
   return undefined
 }
 
+export function getCurrentUser(){
+  let user = AV.User.current();
+  if(user){
+    return getUserFromAVUser(user)
+  }else{
+    return null
+  }
+}
+
 function getUserFromAVUser(AVUser){
   return {
     id: AVUser.id,
     ...AVUser.attributes
   }
+}
+
+export function signOut(){
+  AV.User.logOut()
+  return undefined
 }
