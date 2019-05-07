@@ -43,7 +43,47 @@ function getUserFromAVUser(AVUser){
   }
 }
 
+export function signIn(username, password, successFn, errorFn){
+  AV.User.logIn(username, password).then(function (loginedUser) {
+    let user = getUserFromAVUser(loginedUser);
+    successFn.call(null, user)
+  }, function (error) {
+    errorFn.call(null, error)
+  })
+}
+
 export function signOut(){
-  AV.User.logOut()
+  AV.User.logOut();
   return undefined
+}
+
+export function errorMsg(error) {
+  let resMsg = "";
+  switch (error.code){
+    case 100 :
+      resMsg = "无法连接到服务器";
+      break;
+    case 200 :
+      resMsg = "用户名不能为空";
+      break;
+    case 201 :
+      resMsg = "密码不能为空";
+      break;
+    case 202 :
+      resMsg = "用户名已经被占用";
+      break;
+    case 203 :
+      resMsg = "该邮箱已注册";
+      break;
+    case 210 :
+      resMsg = "用户名与密码不匹配";
+      break;
+    case 211 :
+      resMsg = "找不到用户";
+      break;
+    default :
+      resMsg = "发生未知错误";
+      break;
+  }
+  return resMsg
 }

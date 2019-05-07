@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {signUp} from '../../../leanCloud'
+import {signUp,signIn,errorMsg} from '../../../leanCloud'
+import {Toast} from 'antd-mobile';
 
 import './UserDialog.css'
 export default class UserDialog extends Component{
@@ -20,16 +21,26 @@ export default class UserDialog extends Component{
   }
   signUp(e){
     e.preventDefault();
-    let {username, password} = this.state.formData
+    let {username, password} = this.state.formData;
     let success = (user)=>{
       this.props.onSignUp.call(null, user)
-    }
+    };
     let error = (error)=>{
-      console.log(error)
-    }
+      Toast.fail(errorMsg(error), 2);
+    };
     signUp(username, password, success, error)
   }
-  signIn(e){}
+  signIn(e){
+    e.preventDefault();
+    let {username, password} = this.state.formData;
+    let success = (user)=>{
+      this.props.onSignIn.call(null, user)
+    };
+    let error = (error)=>{
+      Toast.fail(errorMsg(error), 2);
+    };
+    signIn(username, password, success, error)
+  }
   changeFormData(key, e){
     // this.state.formData.username = e.target.value
     // this.setState(this.state)
@@ -66,7 +77,7 @@ export default class UserDialog extends Component{
         <div className="row">
           <label>密码</label>
           <input type="password" value={this.state.formData.password}
-                 onChange={this.changeFormData.bind(this, 'password')}/>s
+                 onChange={this.changeFormData.bind(this, 'password')}/>
         </div>
         <div className="row actions">
           <button type="submit">登录</button>

@@ -139,11 +139,16 @@ class App extends Component {
             <TodoInput placeholder="请输入待办内容" value={this.state.newContent} update={this.newContentChange}/>
           </div>
         </Modal>
-        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)}/>}
+        {this.state.user.id ?
+          null :
+          <UserDialog
+            onSignUp={this.onSignUpOrSignIn.bind(this)}
+            onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     );
   }
-  onSignUp(user){
+
+  onSignUpOrSignIn(user){
     let stateCopy = JSON.parse(JSON.stringify(this.state));
     stateCopy.user = user;
     this.setState(stateCopy)
